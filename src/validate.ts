@@ -37,7 +37,7 @@ export const validateContactRequestBody = (request: ContactRequest): StatusMsg =
 
 const isPostRequest = (request: Request): boolean => request.method === 'POST';
 
-export const validateCaptcha = async (request: ContactRequest, sentry: Toucan): Promise<StatusMsg> => { 
+export const validateCaptcha = async (request: ContactRequest, sentry: Toucan): Promise<StatusMsg> => {
     if (!request.token) {
         sentry.captureMessage('Missing captcha token. Request:' + JSON.stringify(request));
         return Promise.resolve({ status: false, msg: sendEmailFailedMsg });
@@ -67,7 +67,7 @@ export const getCaptchaResponseAndOriginalRequest = (captchaResponse: CaptchaRes
 export const captchaScoreIsNotValid = (score: number): boolean =>  score < 0.5;
 
 const EMPTY_CONTACT_REQUEST: ContactRequest = {
-    from: { email: '', name: '' },
+    from: { email: '', name: '', phone: '' },
     subject: '',
     message: '',
     token: '',
@@ -89,6 +89,7 @@ export interface ContactRequest {
 export interface Contact {
     name: string
     email: string
+    phone: string
 }
 
 export interface CaptchaResponse {
