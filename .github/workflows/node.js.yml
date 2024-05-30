@@ -25,7 +25,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    
+
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
@@ -45,8 +45,8 @@ jobs:
             SENTRY_DSN
         env:
           MAIL_SUBJECT: Contact Request
-          RECIPIENT_NAME: PLACE_RECIPIENT'S_NAME_HERE
-          RECIPIENT_EMAIL: PLACE_RECIPIENT'S_EMAIL_HERE
+          RECIPIENT_NAME: ${{ secrets.CF_RECIPIENT_NAME }}
+          RECIPIENT_EMAIL: ${{ secrets.CF_RECIPIENT_EMAIL }}
           ACCESS_CONTROL_ALLOW_ORIGIN: ${{ secrets.CF_ACCESS_CONTROL_ALLOW_ORIGIN }}
           SENDGRID_API_KEY: ${{ secrets.CF_SENDGRID_API_KEY }}
           RECAPTCHA_SECRET: ${{ secrets.CF_RECAPTCHA_SECRET }}
