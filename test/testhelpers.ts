@@ -8,7 +8,8 @@ export interface WorkerGlobalScope {
 export const ValidRequestData: ContactRequest = {
     from: {
         email: 'test@example.com',
-        name: 'Matt'
+        name: 'Matt',
+        phone: '222-984-3894'
     },
     subject: 'Subject Example',
     message: 'Message example. This is a test.',
