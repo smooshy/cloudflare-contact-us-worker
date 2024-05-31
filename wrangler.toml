@@ -17,8 +17,10 @@ compatibility_date = "2023-08-11"
 command = "npm install && npm run build"
 
 [env.dev]
-ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost:8000'
-SENDGRID_API_KEY = 'SG.abc12345789.123456789abcdefghijklmnopqrstuvwxyzExample'
+ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost:4000'
+MAILGUN_API_KEY = 'laksjdf'
+MAILGUN_DOMAIN = 'sandbox-123.mailgun.org'
 RECIPIENT_NAME = 'Your Name'
 RECIPIENT_EMAIL = 'email@example.com'
 SENTRY_DSN = 'https://123456789EXAMPLE@11111111EXAMPLE.ingest.sentry.io/1234567'
+RECAPTCHA_SECRET = '1234abcd0987zyxw'
