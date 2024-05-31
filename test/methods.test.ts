@@ -19,7 +19,7 @@ describe('Request Method', () => {
       )
     });
 
-    const request = new Request('/', { method: 'POST', body: JSON.stringify(ValidRequestData) });
+    const request = new Request('/api/handle/form', { method: 'POST', body: JSON.stringify(ValidRequestData) });
     const logger = new Toucan({request});
     const result = await handleRequest(request, logger);
     expect(result.status).toEqual(202);
@@ -29,7 +29,7 @@ describe('Request Method', () => {
   })
 
   test('Invalid on GET', async () => {
-    const request = new Request('/', { method: 'GET', body: JSON.stringify(ValidRequestData) });
+    const request = new Request('/api/handle/form', { method: 'GET', body: JSON.stringify(ValidRequestData) });
     const logger = new Toucan({request});
     const result = await handleRequest(request, logger);
     expect(result.status).toEqual(400)
@@ -38,7 +38,7 @@ describe('Request Method', () => {
   })
 
   test('Invalid on PUT', async () => {
-    const request = new Request('/', { method: 'PUT', body: JSON.stringify(ValidRequestData) });
+    const request = new Request('/api/handle/form', { method: 'PUT', body: JSON.stringify(ValidRequestData) });
     const logger = new Toucan({request});
     const result = await handleRequest(request, logger);
     expect(result.status).toEqual(400)
@@ -47,11 +47,20 @@ describe('Request Method', () => {
   })
 
   test('Invalid on DELETE', async () => {
-    const request = new Request('/', { method: 'DELETE', body: JSON.stringify(ValidRequestData) });
+    const request = new Request('/api/handle/form', { method: 'DELETE', body: JSON.stringify(ValidRequestData) });
     const logger = new Toucan({request});
     const result = await handleRequest(request, logger);
     expect(result.status).toEqual(400)
     const text = await result.text()
     expect(text).toEqual('HTTP Method not accepted')
   })
-})
+
+  test('Invalid POST with wrong request path', async () => {
+    const request = new Request('/', { method: 'POST', body: JSON.stringify(ValidRequestData) });
+    const logger = new Toucan({request});
+    const result = await handleRequest(request, logger);
+    expect(result.status).toEqual(404);
+
+    const text = await result.text();
+    expect(text).toEqual('These are not the droids you are looking for');
+  })})
