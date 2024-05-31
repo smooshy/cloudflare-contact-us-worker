@@ -45,7 +45,7 @@ const handleOptionsRequest = (request: Request): Response => {
   ) {
     return new Response(null, {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': ACCESS_CONTROL_ALLOW_ORIGIN,
         'Access-Control-Allow-Methods': 'POST,OPTIONS',
         'Access-Control-Max-Age': '86400',
         'Access-Control-Allow-Headers': request.headers.get('Access-Control-Request-Headers') || '',

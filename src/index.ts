@@ -1,6 +1,8 @@
 import { initSentry } from "./logger";
 import { handleRequest } from './handler'
 
+declare const ACCESS_CONTROL_ALLOW_ORIGIN: string;
+
 addEventListener("fetch", (event) => {
   const sentry = initSentry(event);
 
@@ -11,7 +13,7 @@ addEventListener("fetch", (event) => {
     event.respondWith(handleRequest(event.request, sentry));
   }
 
-  event.respondWith(
-    new Response('These are not the droids you are looking for', { status: 404 })
-  );
+  const notFoundResponse = new Response('These are not the droids you are looking for', { status: 404 });
+  notFoundResponse.headers.set('Access-Control-Allow-Origin', ACCESS_CONTROL_ALLOW_ORIGIN);
+  event.respondWith(notFoundResponse);
 });
