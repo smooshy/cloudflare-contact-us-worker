@@ -39,7 +39,8 @@ jobs:
             RECIPIENT_NAME
             RECIPIENT_EMAIL
             ACCESS_CONTROL_ALLOW_ORIGIN
-            SENDGRID_API_KEY
+            MAILGUN_API_KEY
+            MAILGUN_DOMAIN
             RECAPTCHA_SECRET
             SENTRY_DSN
         env:
