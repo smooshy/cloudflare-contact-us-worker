@@ -10,10 +10,10 @@ addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
   if (url.pathname.startsWith('/api/handle/form')) {
-    event.respondWith(handleRequest(event.request, sentry));
+    return event.respondWith(handleRequest(event.request, sentry));
   }
 
   const notFoundResponse = new Response('These are not the droids you are looking for', { status: 404 });
   notFoundResponse.headers.set('Access-Control-Allow-Origin', ACCESS_CONTROL_ALLOW_ORIGIN);
-  event.respondWith(notFoundResponse);
+  return event.respondWith(notFoundResponse);
 });
