@@ -1,5 +1,5 @@
 import Toucan from "toucan-js";
-import { ContactRequest, validateRequest } from './validate';
+import { validateRequest } from './validate';
 import { sendEmail } from "./sendEmail";
 
 declare const ACCESS_CONTROL_ALLOW_ORIGIN: string;

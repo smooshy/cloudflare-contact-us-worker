@@ -15,7 +15,7 @@ export const sendEmail = (contactRequest: ContactRequest): Promise<MessagesSendR
     return mg.messages.create(MAILGUN_DOMAIN, {
         from: `${RECIPIENT_NAME} <${RECIPIENT_EMAIL}>`,
         to: [RECIPIENT_NAME],
-        subject: `Contact Form Response from ${contactRequest.from.name}`,
+        subject: MAIL_SUBJECT,
         text: `Received a new contact form request from:
 Name: ${contactRequest.from.name}
 Email: ${contactRequest.from.email}

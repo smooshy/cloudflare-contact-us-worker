@@ -45,10 +45,11 @@ jobs:
             RECAPTCHA_SECRET
             SENTRY_DSN
         env:
-          MAIL_SUBJECT: Contact Request
+          MAIL_SUBJECT: ${{ secrets.CF_MAIL_SUBJECT }}
           RECIPIENT_NAME: ${{ secrets.CF_RECIPIENT_NAME }}
           RECIPIENT_EMAIL: ${{ secrets.CF_RECIPIENT_EMAIL }}
           ACCESS_CONTROL_ALLOW_ORIGIN: ${{ secrets.CF_ACCESS_CONTROL_ALLOW_ORIGIN }}
-          SENDGRID_API_KEY: ${{ secrets.CF_SENDGRID_API_KEY }}
+          MAILGUN_API_KEY: ${{ secrets.CF_MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: ${{ secrets.CF_MAILGUN_DOMAIN }}
           RECAPTCHA_SECRET: ${{ secrets.CF_RECAPTCHA_SECRET }}
           SENTRY_DSN: ${{ secrets.CF_SENTRY_DSN }}
