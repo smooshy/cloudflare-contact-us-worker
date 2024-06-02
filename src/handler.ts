@@ -1,6 +1,6 @@
 import Toucan from "toucan-js";
 import { validateRequest } from './validate';
-import { sendEmail } from "./sendEmail";
+import { sendMail } from "./sendEmail";
 
 declare const ACCESS_CONTROL_ALLOW_ORIGIN: string;
 
@@ -16,12 +16,12 @@ export async function handleRequest(request: Request, sentry: Toucan): Promise<R
       return invalidRequestResponse(msg);
     }
 
-    const emailRequest = await sendEmail(contactRequest);
-    if (emailRequest.status !== 200) {
-      const msg = await emailRequest.message;
+    const emailResponse = await sendMail(contactRequest);
+    if (emailResponse.status !== 200) {
+      const response = await emailResponse.text();
       sentry.captureMessage(`Mailgun request failed.
       Request: ${JSON.stringify(contactRequest)}
-      Response: ${emailRequest.status} ${msg}`);
+      Response: ${emailResponse.status} ${response}`);
 
       return invalidRequestResponse(sendEmailFailedMsg);
     }

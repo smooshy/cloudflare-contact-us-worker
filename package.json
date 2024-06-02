@@ -26,7 +26,6 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^3.0.0",
     "@types/jest": "^27.5.1",
-    "@types/mailgun-js": "^0.22.18",
     "@types/service-worker-mock": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
@@ -46,8 +45,6 @@
     "wrangler": "^3.7.0"
   },
   "dependencies": {
-    "form-data": "^4.0.0",
-    "mailgun.js": "^10.2.1",
     "toucan-js": "^2.5.0"
   },
   "repository": {
