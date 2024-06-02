@@ -25,11 +25,11 @@ function urlEncodeObject(obj: {[s: string]: any}) {
 }
 
 function emailDataFromContactRequest(contactRequest: ContactRequest): EmailData {
-    const body = 'Received a new contact form request from:' +
-                `Name: ${contactRequest.from.name}` +
-                `Email: ${contactRequest.from.email}` +
-                `Phone: ${contactRequest.from.phone}`  +
-                'Message:' +
+    const body = 'Received a new contact form request from:\n\n' +
+                `Name: ${contactRequest.from.name}\n` +
+                `Email: ${contactRequest.from.email}\n` +
+                `Phone: ${contactRequest.from.phone}\n\n`  +
+                'Message:\n\n' +
                 contactRequest.message;
 
     return {
@@ -38,7 +38,6 @@ function emailDataFromContactRequest(contactRequest: ContactRequest): EmailData 
         subject: MAIL_SUBJECT,
         text: body,
         html: body,
-        // "o:testmode": true,
     };
 }
 
