@@ -16,12 +16,12 @@ compatibility_date = "2023-08-11"
 [build]
 command = "npm install && npm run build"
 
-[vars.dev]
-ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost:4000'
+[vars]
+ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost'
 MAIL_SUBJECT = 'Test'
-MAILGUN_API_KEY = 'laksjdf'
-MAILGUN_DOMAIN = 'sandbox-123.mailgun.org'
-RECIPIENT_NAME = 'Your Name'
-RECIPIENT_EMAIL = 'email@example.com'
+MAILGUN_API_KEY = 'abcd12354-klsjljk'
+MAILGUN_API_BASE_URL = 'https://api.mailgun.net/v3/sandbox-1.mailgun.org'
+RECIPIENT_NAME = 'Contact Form'
+RECIPIENT_EMAIL = 'contact@example.com'
 SENTRY_DSN = 'https://123456789EXAMPLE@11111111EXAMPLE.ingest.sentry.io/1234567'
-RECAPTCHA_SECRET = 'sample123fakesecret'
+RECAPTCHA_SECRET = 'sampleRecaptchaSecret'
