@@ -16,7 +16,7 @@ compatibility_date = "2023-08-11"
 [build]
 command = "npm install && npm run build"
 
-[vars]
+[env.local.vars]
 ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost'
 MAIL_SUBJECT = 'Test'
 MAILGUN_API_KEY = 'abcd12354-klsjljk'
