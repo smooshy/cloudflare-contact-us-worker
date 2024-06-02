@@ -35,20 +35,22 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           secrets: |
-            MAIL_SUBJECT
-            RECIPIENT_NAME
-            RECIPIENT_EMAIL
             ACCESS_CONTROL_ALLOW_ORIGIN
+            FROM_EMAIL
+            MAIL_SUBJECT
             MAILGUN_API_KEY
             MAILGUN_API_BASE_URL
+            MAILGUN_TEMPLATE
             RECAPTCHA_SECRET
+            RECIPIENT_EMAIL
             SENTRY_DSN
         env:
-          MAIL_SUBJECT: ${{ secrets.CF_MAIL_SUBJECT }}
-          RECIPIENT_NAME: ${{ secrets.CF_RECIPIENT_NAME }}
-          RECIPIENT_EMAIL: ${{ secrets.CF_RECIPIENT_EMAIL }}
           ACCESS_CONTROL_ALLOW_ORIGIN: ${{ secrets.CF_ACCESS_CONTROL_ALLOW_ORIGIN }}
+          FROM_EMAIL: ${{ secrets.CF_FROM_EMAIL }}
+          MAIL_SUBJECT: ${{ secrets.CF_MAIL_SUBJECT }}
           MAILGUN_API_KEY: ${{ secrets.CF_MAILGUN_API_KEY }}
-          MAILGUN_API_BASE_URL: ${{ secrets.MAILGUN_API_BASE_URL }}
+          MAILGUN_API_BASE_URL: ${{ secrets.CF_MAILGUN_API_BASE_URL }}
+          MAILGUN_TEMPLATE: ${{ secrets.CF_MAILGUN_TEMPLATE }}
           RECAPTCHA_SECRET: ${{ secrets.CF_RECAPTCHA_SECRET }}
+          RECIPIENT_EMAIL: ${{ secrets.CF_RECIPIENT_EMAIL }}
           SENTRY_DSN: ${{ secrets.CF_SENTRY_DSN }}

@@ -18,7 +18,9 @@ command = "npm install && npm run build"
 
 [env.local.vars]
 ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost'
+FROM_EMAIL = 'postmaster@sandbox-1-mailgun.com'
 MAIL_SUBJECT = 'Test'
+MAIL_TEMPLATE = 'Template Name'
 MAILGUN_API_KEY = 'abcd12354-klsjljk'
 MAILGUN_API_BASE_URL = 'https://api.mailgun.net/v3/sandbox-1.mailgun.org'
 RECIPIENT_NAME = 'Contact Form'

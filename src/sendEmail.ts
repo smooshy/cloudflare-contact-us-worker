@@ -1,21 +1,24 @@
 import { Contact, ContactRequest } from './validate';
 
+declare const FROM_EMAIL: string;
+declare const MAIL_SUBJECT: string;
 declare const MAILGUN_API_KEY: string;
 declare const MAILGUN_API_BASE_URL: string;
-// declare const RECIPIENT_NAME: string;
+declare const MAILGUN_TEMPLATE: string;
 declare const RECIPIENT_EMAIL: string;
-declare const MAIL_SUBJECT: string;
 
 export interface EmailData {
-    from: string;
-    to: string;
-    subject: string;
-    text: string;
-    html: string
-    cc?: string;
-    bcc?: string;
-    "h-Reply-To"?: string;
-    "o:testmode"?: boolean;
+    from: string
+    to: string
+    subject: string
+    template?: string
+    text?: string
+    html?: string
+    cc?: string
+    bcc?: string
+    "h-Reply-To"?: string
+    "h:X-Mailgun-Variables"?: string
+    "o:testmode"?: boolean
 }
 
 function urlEncodeObject(obj: {[s: string]: any}) {
@@ -25,19 +28,19 @@ function urlEncodeObject(obj: {[s: string]: any}) {
 }
 
 function emailDataFromContactRequest(contactRequest: ContactRequest): EmailData {
-    const body = 'Received a new contact form request from:\n\n' +
-                `Name: ${contactRequest.from.name}\n` +
-                `Email: ${contactRequest.from.email}\n` +
-                `Phone: ${contactRequest.from.phone}\n\n`  +
-                'Message:\n\n' +
-                contactRequest.message;
+    const templateVars = {
+        name: contactRequest.from.name,
+        email: contactRequest.from.email,
+        phone: contactRequest.from.phone,
+        question: contactRequest.message,
+    };
 
     return {
-        from: contactRequest.from.email,
+        from: FROM_EMAIL,
         to: RECIPIENT_EMAIL,
         subject: MAIL_SUBJECT,
-        text: body,
-        html: body,
+        template: MAILGUN_TEMPLATE,
+        "h:X-Mailgun-Variables": JSON.stringify(templateVars),
     };
 }
 
