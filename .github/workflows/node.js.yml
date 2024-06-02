@@ -40,7 +40,7 @@ jobs:
             RECIPIENT_EMAIL
             ACCESS_CONTROL_ALLOW_ORIGIN
             MAILGUN_API_KEY
-            MAILGUN_DOMAIN
+            MAILGUN_API_BASE_URL
             RECAPTCHA_SECRET
             SENTRY_DSN
         env:
@@ -49,6 +49,6 @@ jobs:
           RECIPIENT_EMAIL: ${{ secrets.CF_RECIPIENT_EMAIL }}
           ACCESS_CONTROL_ALLOW_ORIGIN: ${{ secrets.CF_ACCESS_CONTROL_ALLOW_ORIGIN }}
           MAILGUN_API_KEY: ${{ secrets.CF_MAILGUN_API_KEY }}
-          MAILGUN_DOMAIN: ${{ secrets.CF_MAILGUN_DOMAIN }}
+          MAILGUN_API_BASE_URL: ${{ secrets.MAILGUN_API_BASE_URL }}
           RECAPTCHA_SECRET: ${{ secrets.CF_RECAPTCHA_SECRET }}
           SENTRY_DSN: ${{ secrets.CF_SENTRY_DSN }}
